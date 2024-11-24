@@ -58,6 +58,7 @@ Znano je, da so za izdelavo najzahtevnejši fakultetni urniki, zato od sedaj nap
 obravnavamo le slednje. Seznam omejitev, ki jih moramo upoštevati pri teh urnikih,
 je namreč obsežnejši kot pri urnikih osnovnih in srednjih šol.
 
+\newpage
 \subsection{Vhodni podatki}
 
 Če želimo izdelati urnik, v prvi vrsti potrebujemo podatke, ki jih moramo upoštevati in
@@ -323,7 +324,6 @@ Znano je, da požrešna metoda pri nekaterih problemih odpove, je pa vseeno zelo
 tehnika za iskanje rešitev, ko ne zahtevamo njihove optimalnosti. Urnik, ki ga dobimo s
 pomočjo požrešne metode, je lahko namreč še vedno za nekaj nivojev boljši od ročno izdelanega.
 Naslednje vrstice bodo pojasnile, kako implementirati postopek požrešne metode za primer urnika.
-
 % začetek okolja verbatim
 \begin{verbatim}
    
@@ -347,27 +347,30 @@ Naslednje vrstice bodo pojasnile, kako implementirati postopek požrešne metode
 Zgoraj predstavljena shema je le grob opis postopka, ki ga nad urnikom izvaja požrešna metoda,
 zato si je smiselno podrobneje ogledati posamezne korake.
 
-   Z zanko se sprehodimo po vektorju vseh predmetov. Predmet na \(i\)-tem koraku
+\begin{enumerate}
+   \item Z zanko se sprehodimo po vektorju vseh predmetov. Predmet na \(i\)-tem koraku
    označimo s predmet\(_i\).
 
-   Naslednja vgnezdena zanka nas popelje po vseh predavalnicah. Predavalnico na
+   \item Naslednja vgnezdena zanka nas popelje po vseh predavalnicah. Predavalnico na
    \(j\)-tem koraku označimo s predavalnica\(_j\).
 
-   Za vse proste termine predavalnice\(_j\) izračunamo ceno vstavljanja
+   \item Za vse proste termine predavalnice\(_j\) izračunamo ceno vstavljanja
    srečanja\(_i\), ki ga sestavlja predmet\(_i\), profesor, ki ta predmet predava,
    ter skupina, kateri je predmet namenjen.
 
-   Če je trenutna cena boljša od najboljše dosedanje, potem najboljša dosedanja
+   \item Če je trenutna cena boljša od najboljše dosedanje, potem najboljša dosedanja
    dobi vrednost trenutne. Hkrati si zapomnimo, za kateri termin smo izračunali ceno
    vstavljanja, da bomo predmet\(_i\) na koncu vstavili v termin z najboljšo
    ceno vstavljanja.
 
-   Ko preverimo vse proste termine vseh predavalnic, vstavimo srečanje\(_i\)
+   \item Ko preverimo vse proste termine vseh predavalnic, vstavimo srečanje\(_i\)
    v termin z najboljšo ceno.
 
-   Sedaj se ponovno vrnemo na začetek in pogledamo najugodnejši termin za naslednji
+   \item Sedaj se ponovno vrnemo na začetek in pogledamo najugodnejši termin za naslednji
    predmet. Postopek ponavljamo, dokler se zunanja zanka, ki se sprehaja po vseh predmetih,
    ne zaključi. S tem smo namreč v urnik vstavili vse predmete.
+\end{enumerate}
+   
 
 \subsection{Optimizacijske metode} % podrazdelek
 
@@ -418,13 +421,14 @@ Nadgradnja lokalnega vzpenjanja je jasno razvidna iz naslednje sheme.
 
 % začetek okolja verbatim
 \begin{verbatim}
+(1) Izvajaj dokler...
  {
    (2) Iz sistema okolic izberi okolico.
    (3) Iz okolice izberi spremembo.
    (4) Izvedi spremembo.
 }  
 \end{verbatim}
-(1) Izvajaj dokler...
+
 
 % konec okolja verbatim
 
@@ -512,7 +516,7 @@ točk, oziroma ki ima največjo vrednost kriterijske funkcije.
 
 % začetek okolja verbatim
 \begin{verbatim}
- (1) r = rešitev, dobljena s požrešno metodo.
+(1) r = rešitev, dobljena s požrešno metodo.
 (2) Izvajaj, dokler...
 {
    (3) Z optimizacijo izboljšaj r.
@@ -521,19 +525,20 @@ točk, oziroma ki ima največjo vrednost kriterijske funkcije.
 \end{verbatim}
 
 % začetek okolja verbatims
+\begin{enumerate}
+\item V prvem koraku izvedemo požrešno metodo, ki rešitev urnika pripelje v lokalni maksimum.
 
-   V prvem koraku izvedemo požrešno metodo, ki rešitev urnika pripelje v lokalni maksimum.
+\item Zanko izvajamo, dokler ne dosežemo enega izmed ustavitvenih pogojev.
 
-   Zanko izvajamo, dokler ne dosežemo enega izmed ustavitvenih pogojev.
-
-   Rešitev \(r\), ki smo jo dobili s pomočjo požrešne metode, izboljšamo z lokalnim vzpenjanjem
+\item Rešitev \(r\), ki smo jo dobili s pomočjo požrešne metode, izboljšamo z lokalnim vzpenjanjem
    ali iskanjem s tabuji. Kot je že bilo povedano, je iskanje s tabuji nekoliko primernejša metoda,
    saj nas bo lažje pripeljala iz lokalnega maksimuma, do katerega smo prišli s požrešno metodo.
    Vsekakor pa ni nič narobe, če srečo poskusimo tudi z lokalnim vzpenjanjem.
 
-   Na vsakem koraku ocenimo izboljšamo rešitev \(r\). Če je vrednost kriterijske funkcije
+\item Na vsakem koraku ocenimo izboljšamo rešitev \(r\). Če je vrednost kriterijske funkcije
    za trenutno rešitev prešla zastavljeno zadovoljivo mejo, potem se program zaključi. Prav tako
    se zaključi, če po \(n\) korakih še vedno tičimo v istem lokalnem maksimumu.
+\end{enumerate}
 
 % Spodnja vrstica ne začne novega odstavka, zato ne bi smela biti zamaknjena.
 % To popravite z ukazom `\noindent` ali pa tako, da odstranite prazno vrstico.
@@ -546,7 +551,7 @@ uporabili katero izmed tehnik--mogoče bi katero izmed teh postopanj dalo celo b
 \subsection{Zaključek} % podrazdelek
 
 % V spodnjem odstavku naj bodo črke G, U in I v "Graphical User Interface" podčrtane.
-Sledili smo receptu in s tem izdelali ">okusen obrok<", treba ga je le še ustrezno postreči
+Sledili smo receptu in s tem izdelali ">okusen obrok"<, treba ga je le še ustrezno postreči
 gostom za mizo. S tem imamo v mislih grafični uporabniški vmesnik (\underline{G}raphical
 \underline{U}ser \underline{I}nterface), ki mora urnik uporabnikom predstaviti na razumljiv in
 pregleden način. Končnega izgleda izdelka nikakor ne smemo zanemariti, saj je ta med uporabniki
