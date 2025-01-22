@@ -56,4 +56,4 @@ background-color: rgb(51, 0, 102, 0.1);
     margin-top: 0.5em
 }
 
-::before (content: *)
+::before {content: *}
