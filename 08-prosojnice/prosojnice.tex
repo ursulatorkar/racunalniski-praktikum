@@ -1,10 +1,13 @@
 \documentclass{beamer}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[slovene]{babel}
+\usepackage{predavanja}
 \usepackage{pgfpages}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{math}
+\usepackage{pgfplots}
+\usepgfplotslibrary{external}
+\usepackage{array}
 
 
 {\theoremstyle{plain}
@@ -61,34 +64,20 @@
 
 \section{Paket\texttt{beamer}}
 \input{prosojnice/1-paket-beamer.tex} %Ta ukaz vključi vsebino datoteke 1-paket-beamer.tex
-\begin{frame}
-
-\end{frame}
 
 \section{Paketa \texttt{amsmath} in \texttt{amsfonts}}
 \input{prosojnice/2-paketa-amsmath-amsfonts.tex}
-\begin{frame}
-    
-\end{frame}
 
 \section[Matematika, 1. del\\\large{Analiza, logika, množice}]{Matematika, 1. del}
-\begin{frame}
-    
-\end{frame}
+\input{prosojnice/3-analiza-logika-mnozice.tex}
 
 \section{Stolpci in slike}
-\begin{frame}
-    
-\end{frame}
+\input{prosojnice/4-stolpci-slike.tex}
 
 \section{Paket \texttt{beamer} in tabele}
-\begin{frame}
-    
-\end{frame}
+\input{prosojnice/5-beamer-tabele.tex}
 
 \section[Matematika, 2. del\\\large{Zaporedja, algebra, grupe}]{Matematika, 2. del}
-\begin{frame}
-    
-\end{frame}
+\input{prosojnice/6-zaporedja-algebra-grupe.tex}
 
 \end{document}
